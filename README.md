@@ -1,5 +1,5 @@
 # App Description
-A app that will attempt to aid local bussinesses develop and grow.
+A app that will attempt to aid local bussinesses and help them develop and grow.
 
 
 # Developers who worked on this with me:
