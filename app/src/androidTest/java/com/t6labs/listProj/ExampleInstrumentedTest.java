@@ -1,4 +1,4 @@
-package com.local.t6labs.local;
+package com.t6labs.listProj;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.local.t6labs.local", appContext.getPackageName());
+        assertEquals("com.t6labs.listProj", appContext.getPackageName());
     }
 }
