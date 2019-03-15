@@ -1,9 +1,9 @@
-package com.t6labs.listProj;
+package com.local.t6labs.local;
 
+import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 public class ServiceListener implements View.OnClickListener {
@@ -12,14 +12,14 @@ public class ServiceListener implements View.OnClickListener {
     private Context appContext;
     public ServiceListener(Services services) {
         this.services=services;
-        recyclerView=ListActivity.getList();
-        appContext =ListActivity.getAppContext();
+        recyclerView=MainActivity.getList();
+        appContext =MainActivity.getAppContext();
     }
     @Override
     public void onClick(View v) {
         int itemPos = recyclerView.getChildLayoutPosition(v);
-        Intent intent = new Intent(appContext,ServiceInfoActivity.class);
-        intent.putExtra("com.t6labs.ListActivity",services.getId(itemPos));
+        Intent intent = new Intent(appContext,ServiceActivity.class);
+        intent.putExtra("com.t6labs.MainActivity",services.getId(itemPos));
         appContext.startActivity(intent);
     }
 }

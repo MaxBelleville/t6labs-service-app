@@ -1,7 +1,10 @@
-package com.t6labs.listProj;
+package com.local.t6labs.local;
 
+import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +17,7 @@ public class ServicesAdapter  extends
     private ServiceListener serviceListener;
     // Pass in the contact array into the constructor
     public ServicesAdapter() {
-        this.services=ListActivity.getServices();
+        this.services= MainActivity.getServices();
         serviceListener = new ServiceListener(services);
     }
 
