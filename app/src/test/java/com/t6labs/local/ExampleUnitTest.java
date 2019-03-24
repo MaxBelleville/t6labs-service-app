@@ -1,4 +1,4 @@
-package com.local.t6labs.local;
+package com.t6labs.local;
 
 import org.junit.Test;
 

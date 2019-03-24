@@ -1,7 +1,5 @@
-package com.local.t6labs.local;
+package com.t6labs.locals;
 
-import android.app.Activity;
-import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +11,7 @@ public class ServiceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service);
-        Intent intent = getIntent();
+      /*  Intent intent = getIntent();
         TextView title = (TextView)findViewById(R.id.title);
         TextView desc = (TextView)findViewById(R.id.description);
         Services services = MainActivity.getServices();
@@ -25,6 +23,6 @@ public class ServiceActivity extends AppCompatActivity {
                     desc.setText(services.getDescription(i));
                 }
             }
-        }
+        }*/
     }
 }

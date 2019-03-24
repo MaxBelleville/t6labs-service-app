@@ -1,4 +1,4 @@
-package com.local.t6labs.local;
+package com.t6labs.locals;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
