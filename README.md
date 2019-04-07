@@ -7,5 +7,5 @@ A app that will attempt to aid local bussinesses and help them develop and grow.
 * Vinorth (https://github.com/vinorth)
 * Rajeeth (https://github.com/McRaj)
 * Ahmed
-* Mehadi
+* Mehadi (https://github.com/KnightOfHonour12)
 
