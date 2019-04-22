@@ -6,6 +6,6 @@ A app that will attempt to aid local bussinesses and help them develop and grow.
 * Adshayan (https://github.com/adshayanB)
 * Vinorth (https://github.com/vinorth)
 * Rajeeth (https://github.com/McRaj)
-* Ahmed
+* Ahmed (https://github.com/KingSomaan12)
 * Mehadi (https://github.com/KnightOfHonour12)
 
