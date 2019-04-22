@@ -2,13 +2,9 @@
 
 An android application to aid in the development and growth of local businesses
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### Prerequisites
 
-What things you need to install the software and how to install them
+TODO: fill this in
 
 ```
 Give examples
@@ -16,9 +12,7 @@ Give examples
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+TODO: fill this in
 
 ```
 Give the example
@@ -32,49 +26,28 @@ until finished
 
 End with an example of getting some data out of the system or using it for a little demo
 
-## Running the tests
+## Running
 
 Explain how to run the automated tests for this system
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+TODO: Add a list of andriod libraries we used 
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+Please read (link here) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **[Max](https://github.com/MaxBelleville)** - *Front End*
+* **[Rajeeth](https://github.com/McRaj)** - *Front End*
+* **[Vinorth](https://github.com/vinorth)** - *Back End Api*
+* **[Adshayan](https://github.com/adshayanB)** - *?*
+* **[Ahmed](https://github.com/KingSomaan12)** - *?*
+* **[Mehadi](https://github.com/KnightOfHonour12)** - *?*
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of (link here) who participated in this project.
 
 ## License
 
