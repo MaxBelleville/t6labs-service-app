@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.t6labs.locals.adapters.LocalsListAdapter;
 import com.t6labs.locals.adapters.LocalsListingClickListener;
 import com.t6labs.locals.models.LocalsDto;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ArrayList<LocalsDto>> call, Response<ArrayList<LocalsDto>> response) {
                 initLocalsListingRecyclerView(response.body());
-                Log.d("SUCCESS",response.body().toString());
+                Log.d("SUCCESS", response.body().toString());
             }
 
             @Override
