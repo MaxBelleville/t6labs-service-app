@@ -11,6 +11,10 @@ public class LocalsDto implements Serializable {
     @Expose
     private String id;
 
+    @SerializedName("userId")
+    @Expose
+    private String userId;
+
     @SerializedName("title")
     @Expose
     private String title;
@@ -19,10 +23,21 @@ public class LocalsDto implements Serializable {
     @Expose
     private String description;
 
-    @SerializedName("__v")
+    @SerializedName("iconUrl")
     @Expose
-    private Integer v;
+    private String iconUrl;
 
+    @SerializedName("username")
+    @Expose
+    private String username;
+
+    @SerializedName("rating")
+    @Expose
+    private Integer rating;
+
+    @SerializedName("distance")
+    @Expose
+    private Integer distance;
 
     public String getId() {
         return id;
@@ -32,31 +47,31 @@ public class LocalsDto implements Serializable {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getTitle() {
+        return title;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public String getIconUrl() {
+        return iconUrl;
     }
 
-    public Integer getV() {
-        return v;
+    public String getUsername() {
+        return username;
     }
 
-    public void setV(Integer v) {
-        this.v = v;
+    public Integer getRating() {
+        return rating;
     }
 
-    public String getUserName() {
-        return "John Smith";
+    public Integer getDistance() {
+        return distance;
     }
 }

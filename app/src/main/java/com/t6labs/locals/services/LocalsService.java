@@ -9,7 +9,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface LocalsService {
-    @GET("tests")
+    @GET("listings")
     Call<ArrayList<LocalsDto>> getLocalsListing();
 
     @GET("description")

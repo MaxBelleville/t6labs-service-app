@@ -36,13 +36,13 @@ public class LocalsListAdapter extends RecyclerView.Adapter<LocalsListAdapter.Lo
     public void onBindViewHolder(LocalsListViewHolder viewHolder, int i) {
 
         //TODO handle empty check somewhere else
-        if(!localsArrayList.isEmpty()) {
+        if (!localsArrayList.isEmpty()) {
 
-            if(localsArrayList.get(i).getTitle() != null) {
+            if (localsArrayList.get(i).getTitle() != null) {
                 viewHolder.sName.setText(localsArrayList.get(i).getTitle());
             }
 
-            if(localsArrayList.get(i).getDescription() != null ) {
+            if (localsArrayList.get(i).getDescription() != null) {
                 viewHolder.sDesc.setText(localsArrayList.get(i).getDescription());
             }
 
@@ -50,7 +50,7 @@ public class LocalsListAdapter extends RecyclerView.Adapter<LocalsListAdapter.Lo
 
         //TODO remove hardcoded rating
         viewHolder.rating.setRating(3.5f);
-        viewHolder.sUser.setText(localsArrayList.get(i).getUserName());
+        viewHolder.sUser.setText(localsArrayList.get(i).getUsername());
     }
 
     @Override
