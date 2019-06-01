@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitInstance {
     private static Retrofit retrofit;
-    private static final String BASE_URL = "http://20.37.136.227/";
+    private static final String BASE_URL = "http://t6-api.azurewebsites.net/";
 
     public static Retrofit getRetrofitInstance() {
         if (retrofit == null) {

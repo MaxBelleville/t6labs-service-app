@@ -1,5 +1,6 @@
 package com.t6labs.locals;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.content.ContextCompat;
@@ -7,7 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
+import com.t6labs.locals.adapters.LocalsListAdapter;
+import com.t6labs.locals.adapters.LocalsListingClickListener;
 import com.t6labs.locals.models.LocalsDto;
 import com.t6labs.locals.services.LocalsService;
 import com.t6labs.locals.services.RetrofitInstance;
@@ -37,21 +43,31 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ArrayList<LocalsDto>> call, Response<ArrayList<LocalsDto>> response) {
                 initLocalsListingRecyclerView(response.body());
+                Log.d("SUCCESS",response.body().toString());
             }
 
             @Override
             public void onFailure(Call<ArrayList<LocalsDto>> call, Throwable t) {
-                //TODO handle errors
+                Log.d("ERROR",t.getMessage());
             }
-        });
+         });
 
         initNavigation();
     }
 
     //setup Recyclerview
-    private void initLocalsListingRecyclerView(ArrayList<LocalsDto> localsDtos) {
+    private void initLocalsListingRecyclerView(final ArrayList<LocalsDto> localsDto) {
         localsListing = (RecyclerView) findViewById(R.id.myList);
-        localsListAdapter = new LocalsListAdapter(localsDtos);
+        localsListAdapter = new LocalsListAdapter(localsDto, new LocalsListingClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Intent intent =  new Intent(getApplicationContext(),ServiceActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("local",localsDto.get(position));
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         localsListing.setLayoutManager(layoutManager);
         localsListing.setAdapter(localsListAdapter);
