@@ -2,6 +2,7 @@ package com.t6labs.locals;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -42,16 +43,15 @@ public class MainActivity extends AppCompatActivity {
 
         call.enqueue(new Callback<ArrayList<LocalsDto>>() {
             @Override
-            public void onResponse(Call<ArrayList<LocalsDto>> call, Response<ArrayList<LocalsDto>> response) {
+            public void onResponse(@NonNull Call<ArrayList<LocalsDto>> call, @NonNull Response<ArrayList<LocalsDto>> response) {
                 initLocalsListingRecyclerView(response.body());
-                Log.d("SUCCESS", response.body().toString());
             }
 
             @Override
-            public void onFailure(Call<ArrayList<LocalsDto>> call, Throwable t) {
-                Log.d("ERROR",t.getMessage());
+            public void onFailure(@NonNull Call<ArrayList<LocalsDto>> call, @NonNull Throwable t) {
+                Log.d("ERROR", t.getMessage());
             }
-         });
+        });
 
         initNavigation();
     }
@@ -62,9 +62,9 @@ public class MainActivity extends AppCompatActivity {
         localsListAdapter = new LocalsListAdapter(localsDto, new LocalsListingClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                Intent intent =  new Intent(getApplicationContext(),ServiceActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ServiceActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("local",localsDto.get(position));
+                bundle.putSerializable("local", localsDto.get(position));
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
