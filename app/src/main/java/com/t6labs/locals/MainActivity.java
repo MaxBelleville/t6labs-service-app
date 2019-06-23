@@ -11,9 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.t6labs.locals.adapters.LocalsListAdapter;
 import com.t6labs.locals.adapters.LocalsListingClickListener;
 import com.t6labs.locals.models.LocalsDto;
@@ -62,9 +60,10 @@ public class MainActivity extends AppCompatActivity {
         localsListAdapter = new LocalsListAdapter(localsDto, new LocalsListingClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                Intent intent = new Intent(getApplicationContext(), ServiceActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ListingDescriptionActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("local", localsDto.get(position));
+                //bundle.putSerializable("local", localsDto.get(position));
+                bundle.putString("id",localsDto.get(position).getId());
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
