@@ -1,4 +1,4 @@
-package com.t6labs.locals;
+package com.t6labs.locals.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.t6labs.locals.R;
 import com.t6labs.locals.models.LocalsDto;
 
 import java.util.ArrayList;
@@ -14,29 +15,34 @@ import java.util.ArrayList;
 public class LocalsListAdapter extends RecyclerView.Adapter<LocalsListAdapter.LocalsListViewHolder> {
 
     private ArrayList<LocalsDto> localsArrayList;
+    LocalsListingClickListener listener;
 
-    public LocalsListAdapter(ArrayList<LocalsDto> localsArrayList) {
+    public LocalsListAdapter(ArrayList<LocalsDto> localsArrayList, LocalsListingClickListener listener) {
         this.localsArrayList = localsArrayList;
+        this.listener = listener;
     }
 
     @Override
-    public LocalsListViewHolder onCreateViewHolder(ViewGroup parent, int ViewType) {
+    public LocalsListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.services_list_layout, parent, false);
-        return new LocalsListViewHolder(view);
+
+        final LocalsListViewHolder viewHolder = new LocalsListViewHolder(view);
+
+        return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(LocalsListViewHolder viewHolder, int i) {
 
         //TODO handle empty check somewhere else
-        if(!localsArrayList.isEmpty()) {
+        if (!localsArrayList.isEmpty()) {
 
-            if(localsArrayList.get(i).getTitle() != null) {
+            if (localsArrayList.get(i).getTitle() != null) {
                 viewHolder.sName.setText(localsArrayList.get(i).getTitle());
             }
 
-            if(localsArrayList.get(i).getDescription() != null ) {
+            if (localsArrayList.get(i).getDescription() != null) {
                 viewHolder.sDesc.setText(localsArrayList.get(i).getDescription());
             }
 
@@ -44,7 +50,7 @@ public class LocalsListAdapter extends RecyclerView.Adapter<LocalsListAdapter.Lo
 
         //TODO remove hardcoded rating
         viewHolder.rating.setRating(3.5f);
-        viewHolder.sUser.setText(localsArrayList.get(i).getUserName());
+        viewHolder.sUser.setText(localsArrayList.get(i).getUsername());
     }
 
     @Override
@@ -61,6 +67,14 @@ public class LocalsListAdapter extends RecyclerView.Adapter<LocalsListAdapter.Lo
 
         LocalsListViewHolder(View itemView) {
             super(itemView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(v, getAdapterPosition());
+                }
+            });
+
             sName = itemView.findViewById(R.id.sName);
             sDesc = itemView.findViewById(R.id.sDescription);
             sUser = itemView.findViewById(R.id.sUser);
