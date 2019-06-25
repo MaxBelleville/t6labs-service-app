@@ -14,6 +14,7 @@ import com.t6labs.locals.models.DescriptionDto;
 import com.t6labs.locals.services.LocalsService;
 import com.t6labs.locals.services.RetrofitInstance;
 
+import butterknife.BindView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -21,11 +22,15 @@ import retrofit2.internal.EverythingIsNonNull;
 
 public class ListingDescriptionActivity extends AppCompatActivity {
     CarouselView carouselView;
-
     int[] sampleImages = {R.drawable.image_1, R.drawable.image_2, R.drawable.image_3};
-    private TextView userName;
-    private TextView title;
-    private TextView listingDescription;
+    @BindView(R.id.username)
+    TextView userName;
+
+    @BindView(R.id.listingTitle)
+    TextView title;
+
+    @BindView(R.id.description)
+    TextView listingDescription;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
