@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="3dp"
-    android:background="@drawable/shadow"
+    android:background="@color/colorWhite"
     android:orientation="vertical">
 
     <android.support.constraint.ConstraintLayout
@@ -13,57 +12,68 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/sDescription"
+            android:id="@+id/listDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/raleway_semibold"
             android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/favouriteIcon"
-            app:layout_constraintStart_toEndOf="@+id/imgIcon"
-            app:layout_constraintTop_toBottomOf="@+id/sName"
+            android:typeface="normal"
+            app:layout_constraintEnd_toStartOf="@+id/listFavourite"
+            app:layout_constraintStart_toEndOf="@+id/listIcon"
+            app:layout_constraintTop_toBottomOf="@+id/listTitle"
             tools:text="This is the list description and it should go to the next line" />
 
         <TextView
-            android:id="@+id/sName"
+            android:id="@+id/listTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:fontFamily="sans-serif-black"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/raleway_medium"
             android:textColor="@color/colorBlack"
             android:textSize="24sp"
             android:textStyle="bold"
             android:typeface="normal"
-            app:layout_constraintBottom_toTopOf="@+id/sDescription"
-            app:layout_constraintEnd_toStartOf="@+id/favouriteIcon"
+            app:layout_constraintBottom_toTopOf="@+id/listDescription"
+            app:layout_constraintEnd_toStartOf="@+id/listFavourite"
             app:layout_constraintHorizontal_bias="0.575"
-            app:layout_constraintStart_toEndOf="@+id/imgIcon"
+            app:layout_constraintStart_toEndOf="@+id/listIcon"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside"
             tools:text="List Title" />
 
 
         <TextView
-            android:id="@+id/sUser"
-            android:layout_width="wrap_content"
+            android:id="@+id/listUser"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:textSize="18sp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/raleway_semibold"
+            android:textSize="14sp"
+            android:typeface="normal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imgIcon"
-            app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+            app:layout_constraintEnd_toStartOf="@+id/listRating"
+            app:layout_constraintStart_toEndOf="@+id/listIcon"
+            app:layout_constraintTop_toBottomOf="@+id/listDescription"
+            app:layout_constraintVertical_bias="0.49"
             tools:text="List User Name" />
 
         <RatingBar
-            android:id="@+id/ratingBar"
+            android:id="@+id/listRating"
             style="@android:style/Widget.DeviceDefault.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:max="5"
             android:numStars="5"
             android:progressTint="#ffe900"
@@ -71,14 +81,15 @@
             android:scaleX="1.25"
             android:scaleY="1.25"
             android:stepSize="0.5"
-            app:layout_constraintStart_toStartOf="@+id/sDescription"
-            app:layout_constraintTop_toBottomOf="@+id/sDescription" />
+            app:layout_constraintEnd_toStartOf="@+id/listDistance"
+            app:layout_constraintStart_toEndOf="@+id/listUser"
+            app:layout_constraintTop_toBottomOf="@+id/listDescription" />
 
         <ImageView
-            android:id="@+id/favouriteIcon"
+            android:id="@+id/listFavourite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:contentDescription="favourite"
             app:layout_constraintEnd_toEndOf="parent"
@@ -86,11 +97,11 @@
             app:srcCompat="@drawable/ic_favorite_black_24dp" />
 
         <ImageView
-            android:id="@+id/imgIcon"
+            android:id="@+id/listIcon"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="300dp"
             android:contentDescription="imageIcon"
             app:layout_constraintEnd_toEndOf="parent"
@@ -100,17 +111,25 @@
             app:srcCompat="@drawable/ic_person_black_24dp" />
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="0dp"
+            android:id="@+id/listDistance"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="sans-serif"
+            android:fontFamily="@font/raleway_semibold"
             android:text="1 - 5 km"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="14sp"
+            android:typeface="normal"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listDescription"
             tools:text="1 - 5km" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="80dp"
+            android:background="#1F000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>

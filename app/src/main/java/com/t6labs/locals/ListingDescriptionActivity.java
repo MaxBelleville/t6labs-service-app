@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
 import com.t6labs.locals.models.DescriptionDto;
 import com.t6labs.locals.services.LocalsService;
 import com.t6labs.locals.services.RetrofitInstance;
@@ -17,7 +20,9 @@ import retrofit2.Response;
 import retrofit2.internal.EverythingIsNonNull;
 
 public class ListingDescriptionActivity extends AppCompatActivity {
+    CarouselView carouselView;
 
+    int[] sampleImages = {R.drawable.image_1, R.drawable.image_2, R.drawable.image_3};
     private TextView userName;
     private TextView title;
     private TextView listingDescription;
@@ -32,6 +37,10 @@ public class ListingDescriptionActivity extends AppCompatActivity {
         title = findViewById(R.id.listingTitle);
         listingDescription = findViewById(R.id.description);
 
+        carouselView = (CarouselView) findViewById(R.id.carouselView);
+        carouselView.setPageCount(sampleImages.length);
+
+        carouselView.setImageListener(imageListener);
 
         Bundle bundle = getIntent().getExtras();
 
@@ -59,7 +68,12 @@ public class ListingDescriptionActivity extends AppCompatActivity {
             });
         }
     }
-
+    private ImageListener imageListener = new ImageListener() {
+        @Override
+        public void setImageForPosition(int position, ImageView imageView) {
+            imageView.setImageResource(sampleImages[position]);
+        }
+    };
     private void populateDescription(@NonNull DescriptionDto responseData) {
         userName.setText(responseData.getUsername());
         title.setText(responseData.getTitle());

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.synnapps.carouselview.CarouselView;
 import com.t6labs.locals.R;
 import com.t6labs.locals.models.LocalsDto;
 
@@ -34,7 +35,8 @@ public class LocalsListAdapter extends RecyclerView.Adapter<LocalsListAdapter.Lo
 
     @Override
     public void onBindViewHolder(LocalsListViewHolder viewHolder, int i) {
-
+        viewHolder.rating.setRating(3.5f);
+        viewHolder.sUser.setText("John Doe");
         //TODO handle empty check somewhere else
         if (!localsArrayList.isEmpty()) {
 
@@ -45,12 +47,13 @@ public class LocalsListAdapter extends RecyclerView.Adapter<LocalsListAdapter.Lo
             if (localsArrayList.get(i).getDescription() != null) {
                 viewHolder.sDesc.setText(localsArrayList.get(i).getDescription());
             }
-
+            if(localsArrayList.get(i).getUsername()!=null){
+                viewHolder.sUser.setText(localsArrayList.get(i).getUsername());
+            }
         }
 
         //TODO remove hardcoded rating
-        viewHolder.rating.setRating(3.5f);
-        viewHolder.sUser.setText(localsArrayList.get(i).getUsername());
+
     }
 
     @Override
@@ -75,10 +78,10 @@ public class LocalsListAdapter extends RecyclerView.Adapter<LocalsListAdapter.Lo
                 }
             });
 
-            sName = itemView.findViewById(R.id.sName);
-            sDesc = itemView.findViewById(R.id.sDescription);
-            sUser = itemView.findViewById(R.id.sUser);
-            rating = itemView.findViewById(R.id.ratingBar);
+            sName = itemView.findViewById(R.id.listTitle);
+            sDesc = itemView.findViewById(R.id.listDescription);
+            sUser = itemView.findViewById(R.id.listUser);
+            rating = itemView.findViewById(R.id.listRating);
         }
     }
 

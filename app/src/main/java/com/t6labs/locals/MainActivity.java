@@ -10,6 +10,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.t6labs.locals.adapters.LocalsListAdapter;
@@ -82,5 +83,15 @@ public class MainActivity extends AppCompatActivity {
     //setup navigation
     private void initNavigation() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                if (menuItem.getTitle().equals("Account")) {
+                    Intent intent = new Intent(getApplicationContext(), NewListing.class);
+                    startActivity(intent);
+                }
+                return true;
+            }
+        });
     }
 }
