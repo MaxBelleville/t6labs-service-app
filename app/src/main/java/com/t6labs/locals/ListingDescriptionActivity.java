@@ -21,7 +21,9 @@ import retrofit2.Response;
 import retrofit2.internal.EverythingIsNonNull;
 
 public class ListingDescriptionActivity extends AppCompatActivity {
+    //TODO replace with images from api
     int[] sampleImages = {R.drawable.image_1, R.drawable.image_2, R.drawable.image_3};
+
     @BindView(R.id.username)
     TextView userName;
 
