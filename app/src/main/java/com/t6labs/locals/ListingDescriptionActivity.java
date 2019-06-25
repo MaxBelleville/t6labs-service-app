@@ -21,7 +21,6 @@ import retrofit2.Response;
 import retrofit2.internal.EverythingIsNonNull;
 
 public class ListingDescriptionActivity extends AppCompatActivity {
-    CarouselView carouselView;
     int[] sampleImages = {R.drawable.image_1, R.drawable.image_2, R.drawable.image_3};
     @BindView(R.id.username)
     TextView userName;
@@ -32,17 +31,15 @@ public class ListingDescriptionActivity extends AppCompatActivity {
     @BindView(R.id.description)
     TextView listingDescription;
 
+    @BindView(R.id.carouselView)
+    CarouselView carouselView;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_description);
 
-        userName = findViewById(R.id.username);
-        title = findViewById(R.id.listingTitle);
-        listingDescription = findViewById(R.id.description);
-
-        carouselView = (CarouselView) findViewById(R.id.carouselView);
         carouselView.setPageCount(sampleImages.length);
 
         carouselView.setImageListener(imageListener);
@@ -73,12 +70,9 @@ public class ListingDescriptionActivity extends AppCompatActivity {
             });
         }
     }
-    private ImageListener imageListener = new ImageListener() {
-        @Override
-        public void setImageForPosition(int position, ImageView imageView) {
-            imageView.setImageResource(sampleImages[position]);
-        }
-    };
+
+    private ImageListener imageListener = (position, imageView) -> imageView.setImageResource(sampleImages[position]);
+
     private void populateDescription(@NonNull DescriptionDto responseData) {
         userName.setText(responseData.getUsername());
         title.setText(responseData.getTitle());
