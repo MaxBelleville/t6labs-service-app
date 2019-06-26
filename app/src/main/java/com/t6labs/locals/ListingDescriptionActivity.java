@@ -15,6 +15,7 @@ import com.t6labs.locals.services.LocalsService;
 import com.t6labs.locals.services.RetrofitInstance;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,9 +42,9 @@ public class ListingDescriptionActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_description);
+        ButterKnife.bind(this);
 
         carouselView.setPageCount(sampleImages.length);
-
         carouselView.setImageListener(imageListener);
 
         Bundle bundle = getIntent().getExtras();
