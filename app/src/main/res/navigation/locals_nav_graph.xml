@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/locals_home_navigation_entry_point"
+  app:startDestination="@id/localsHomeFragment">
+
+    <fragment
+        android:id="@+id/localsHomeFragment"
+        android:name="com.t6labs.locals.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/content_main">
+            <action
+                android:id="@+id/action_home_fragment_to_DescriptionFragment"
+                app:destination="@id/listingDescriptionFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/listingDescriptionFragment"
+        android:name="com.t6labs.locals.ListingDescriptionFragment"
+        android:label="content_description"
+        tools:layout="@layout/content_description">
+
+        <argument
+            android:name="listingId"
+            app:argType="string"
+            android:defaultValue="1"/>
+    </fragment>
+
+</navigation>

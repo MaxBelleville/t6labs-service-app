@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.synnapps.carouselview.CarouselView;
 import com.t6labs.locals.R;
 import com.t6labs.locals.models.LocalsDto;
 
@@ -71,12 +70,7 @@ public class LocalsListAdapter extends RecyclerView.Adapter<LocalsListAdapter.Lo
         LocalsListViewHolder(View itemView) {
             super(itemView);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    listener.onItemClick(v, getAdapterPosition());
-                }
-            });
+            itemView.setOnClickListener(v -> listener.onItemClick(v, getAdapterPosition()));
 
             sName = itemView.findViewById(R.id.listTitle);
             sDesc = itemView.findViewById(R.id.listDescription);
