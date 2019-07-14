@@ -89,10 +89,6 @@ public class HomeFragment extends Fragment {
              String id = localsDto.get(position).getId();
              HomeFragmentDirections.ActionHomeFragmentToDescriptionFragment actionHomeFragmentToDescriptionFragment = HomeFragmentDirections.actionHomeFragmentToDescriptionFragment();
              actionHomeFragmentToDescriptionFragment.setListingId(id);
-             //final NavDirections directions = HomeFragmentDirections.actionHomeFragmentToDescriptionFragment(id);
-
-             //NavController navController = new NavController(v.getContext());
-             //navController.navigate(directions);
              Navigation.findNavController(v).navigate(actionHomeFragmentToDescriptionFragment);
          });
 

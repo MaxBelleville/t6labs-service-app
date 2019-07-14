@@ -1,11 +1,10 @@
 package com.t6labs.locals;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
+import android.support.v7.widget.Toolbar;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -15,10 +14,14 @@ import androidx.navigation.ui.NavigationUI;
 //TODO extend LocalsListingActivity from main activity
 public class MainActivity extends AppCompatActivity {
 
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         setupNavigation();
     }
 
@@ -27,29 +30,24 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this,R.id.nav_host_fragment);
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigationView);
         setupWithNavController(bottomNavigationView,navController);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                if (menuItem.getTitle().equals("Account")) {
-                    Intent intent = new Intent(getApplicationContext(), NewListing.class);
-                    startActivity(intent);
-                }
-                return true;
-            }
-        });
     }
 
-    private static void setupWithNavController(@NonNull final BottomNavigationView bottomNavigationView,
+    private void setupWithNavController(@NonNull final BottomNavigationView bottomNavigationView,
                                                @NonNull final NavController navController) {
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 
-                //TODO handle bottom navigation item click events
-
-                return false;
+            switch (item.getItemId()) {
+                case R.id.localsHomeFragment:
+                    break;
+                case R.id.navigation_map:
+                    break;
+                case R.id.navigation_account:
+                    break;
+                case R.id.navigation_favourite:
             }
+
+            return true;
         });
 
         NavigationUI.setupWithNavController(bottomNavigationView,navController);
