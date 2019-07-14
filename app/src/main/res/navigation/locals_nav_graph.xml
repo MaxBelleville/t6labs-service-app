@@ -6,6 +6,7 @@
   android:id="@+id/locals_home_navigation_entry_point"
   app:startDestination="@id/localsHomeFragment">
 
+    <!-- same name as the id of the bottom navigation item -->
     <fragment
         android:id="@+id/localsHomeFragment"
         android:name="com.t6labs.locals.HomeFragment"
@@ -28,4 +29,10 @@
             android:defaultValue="1"/>
     </fragment>
 
+    <!-- same name as the id of the bottom navigation item -->
+    <fragment
+        android:id="@+id/navigation_account"
+        android:name="com.t6labs.locals.NewListingFragment"
+        android:label="new listing"
+        tools:layout="@layout/content_new_listing" />
 </navigation>
