@@ -6,7 +6,13 @@
     android:layout_height="match_parent"
     tools:context="com.t6labs.locals.MainActivity">
 
-    <include layout="@layout/content_main" />
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/locals_nav_graph" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigationView"
