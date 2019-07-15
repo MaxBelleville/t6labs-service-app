@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.widget.TextView;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -15,14 +17,28 @@ import androidx.navigation.ui.NavigationUI;
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
+    private TextView toolbarTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setupToolbar();
+        setupNavigation();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    //setup toolbar
+    private void setupToolbar() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setupNavigation();
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbarTitle = toolbar.findViewById(R.id.toolbar_title);
     }
 
     //setup navigation
@@ -32,11 +48,15 @@ public class MainActivity extends AppCompatActivity {
         setupWithNavController(bottomNavigationView,navController);
     }
 
+    public void setActionBarTitle(@NonNull String title, @NonNull boolean showBackButton) {
+        toolbarTitle.setText(title);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(showBackButton);
+    }
+
     private void setupWithNavController(@NonNull final BottomNavigationView bottomNavigationView,
                                                @NonNull final NavController navController) {
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-
             switch (item.getItemId()) {
                 case R.id.localsHomeFragment:
                     break;
@@ -45,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_account:
                     break;
                 case R.id.navigation_favourite:
+                    break;
             }
-
             return true;
         });
 
