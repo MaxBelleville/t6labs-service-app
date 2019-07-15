@@ -13,8 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.navigation.NavController;
-import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import com.t6labs.locals.adapters.LocalsListAdapter;
@@ -53,8 +51,12 @@ public class HomeFragment extends Fragment {
                              ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.content_main, container, false);
+        View view = inflater.inflate(R.layout.content_home, container, false);
         unbinder = ButterKnife.bind(this, view);
+
+        //TODO refactor
+        ((MainActivity) getActivity()).setActionBarTitle("Local Listings", false);
+
         return view;
     }
 
@@ -85,12 +87,12 @@ public class HomeFragment extends Fragment {
 
     private void initLocalsListingRecyclerView(final ArrayList<LocalsDto> localsDto) {
 
-         localsListAdapter = new LocalsListAdapter(localsDto, (v, position) -> {
-             String id = localsDto.get(position).getId();
-             HomeFragmentDirections.ActionHomeFragmentToDescriptionFragment actionHomeFragmentToDescriptionFragment = HomeFragmentDirections.actionHomeFragmentToDescriptionFragment();
-             actionHomeFragmentToDescriptionFragment.setListingId(id);
-             Navigation.findNavController(v).navigate(actionHomeFragmentToDescriptionFragment);
-         });
+        localsListAdapter = new LocalsListAdapter(localsDto, (v, position) -> {
+            String id = localsDto.get(position).getId();
+            HomeFragmentDirections.ActionHomeFragmentToDescriptionFragment actionHomeFragmentToDescriptionFragment = HomeFragmentDirections.actionHomeFragmentToDescriptionFragment();
+            actionHomeFragmentToDescriptionFragment.setListingId(id);
+            Navigation.findNavController(v).navigate(actionHomeFragmentToDescriptionFragment);
+        });
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         localsListing.setLayoutManager(layoutManager);

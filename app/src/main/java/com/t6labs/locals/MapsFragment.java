@@ -1,14 +1,14 @@
 package com.t6labs.locals;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class NewListingFragment extends Fragment {
+public class MapsFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -21,8 +21,8 @@ public class NewListingFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         //TODO refactor
-        ((MainActivity) getActivity()).setActionBarTitle("Create New Listing", true);
-        return inflater.inflate(R.layout.content_new_listing, container, false);
+        ((MainActivity) getActivity()).setActionBarTitle("Map Lookup", true);
+        return inflater.inflate(R.layout.content_maps, container, false);
     }
 
     @Override
