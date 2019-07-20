@@ -16,6 +16,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import java.util.Objects;
+
 //TODO rename activity to LocalsListingActivity and move all common methods to MainActivity
 //TODO extend LocalsListingActivity from main activity
 public class MainActivity extends AppCompatActivity {
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     private void setupToolbar() {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         toolbarTitle = toolbar.findViewById(R.id.toolbar_title);
     }
 
@@ -65,9 +67,9 @@ public class MainActivity extends AppCompatActivity {
         setupWithNavController(bottomNavigationView,navController);
     }
 
-    public void setActionBarTitle(@NonNull String title, @NonNull boolean showBackButton) {
+    public void setActionBarTitle(@NonNull String title, boolean showBackButton) {
         toolbarTitle.setText(title);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(showBackButton);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(showBackButton);
     }
 
     private void setupWithNavController(@NonNull final BottomNavigationView bottomNavigationView,

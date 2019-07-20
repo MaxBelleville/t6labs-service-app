@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import com.t6labs.locals.MainActivity;
 import com.t6labs.locals.R;
 
+import java.util.Objects;
+
 public class NewListingFragment extends Fragment {
 
     @Override
@@ -24,7 +26,7 @@ public class NewListingFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         //TODO refactor
-        ((MainActivity) getActivity()).setActionBarTitle("Create New Listing", true);
+        Objects.requireNonNull((MainActivity) getActivity()).setActionBarTitle("Create New Listing", true);
         return inflater.inflate(R.layout.content_new_listing, container, false);
     }
 

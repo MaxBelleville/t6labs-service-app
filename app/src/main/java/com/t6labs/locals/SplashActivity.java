@@ -17,12 +17,9 @@ public class SplashActivity extends AppCompatActivity {
 
         continueButton = findViewById(R.id.btn_splash_continue);
 
-        continueButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(intent);
-            }
+        continueButton.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+            startActivity(intent);
         });
 
     }

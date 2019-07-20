@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import com.t6labs.locals.MainActivity;
 import com.t6labs.locals.R;
 
+import java.util.Objects;
+
 public class MapsFragment extends Fragment {
 
     @Override
@@ -24,7 +26,7 @@ public class MapsFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         //TODO refactor
-        ((MainActivity) getActivity()).setActionBarTitle("Map Lookup", true);
+        Objects.requireNonNull((MainActivity) getActivity()).setActionBarTitle("Map Lookup", true);
         return inflater.inflate(R.layout.content_maps, container, false);
     }
 

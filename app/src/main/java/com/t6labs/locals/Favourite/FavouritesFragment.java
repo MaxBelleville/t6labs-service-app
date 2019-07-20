@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import com.t6labs.locals.MainActivity;
 import com.t6labs.locals.R;
 
+import java.util.Objects;
+
 public class FavouritesFragment extends Fragment {
 
     @Override
@@ -24,7 +26,7 @@ public class FavouritesFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         //TODO refactor
-        ((MainActivity) getActivity()).setActionBarTitle("My Favourite Listings", true);
+        Objects.requireNonNull((MainActivity) getActivity()).setActionBarTitle("My Favourite Listings", true);
         return inflater.inflate(R.layout.content_favourites, container, false);
     }
 
