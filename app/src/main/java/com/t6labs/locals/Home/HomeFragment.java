@@ -1,4 +1,4 @@
-package com.t6labs.locals;
+package com.t6labs.locals.Home;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,8 +15,8 @@ import android.view.ViewGroup;
 
 import androidx.navigation.Navigation;
 
-import com.t6labs.locals.adapters.LocalsListAdapter;
-import com.t6labs.locals.models.LocalsDto;
+import com.t6labs.locals.MainActivity;
+import com.t6labs.locals.R;
 import com.t6labs.locals.services.LocalsService;
 import com.t6labs.locals.services.RetrofitInstance;
 

@@ -1,4 +1,4 @@
-package com.t6labs.locals;
+package com.t6labs.locals.Maps;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.t6labs.locals.MainActivity;
+import com.t6labs.locals.R;
 
 public class MapsFragment extends Fragment {
 

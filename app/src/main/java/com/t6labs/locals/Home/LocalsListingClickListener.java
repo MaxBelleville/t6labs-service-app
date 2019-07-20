@@ -1,4 +1,4 @@
-package com.t6labs.locals.adapters;
+package com.t6labs.locals.Home;
 
 import android.view.View;
 

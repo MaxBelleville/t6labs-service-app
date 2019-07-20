@@ -1,4 +1,4 @@
-package com.t6labs.locals;
+package com.t6labs.locals.NewListing;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.t6labs.locals.MainActivity;
+import com.t6labs.locals.R;
 
 public class NewListingFragment extends Fragment {
 

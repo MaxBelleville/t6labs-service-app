@@ -1,4 +1,4 @@
-package com.t6labs.locals.adapters;
+package com.t6labs.locals.Home;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,7 +8,6 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.t6labs.locals.R;
-import com.t6labs.locals.models.LocalsDto;
 
 import java.util.ArrayList;
 
