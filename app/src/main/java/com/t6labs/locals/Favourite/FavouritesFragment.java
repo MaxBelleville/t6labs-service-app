@@ -1,4 +1,4 @@
-package com.t6labs.locals;
+package com.t6labs.locals.Favourite;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,7 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class MapsFragment extends Fragment {
+import com.t6labs.locals.MainActivity;
+import com.t6labs.locals.R;
+
+import java.util.Objects;
+
+public class FavouritesFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -21,12 +26,13 @@ public class MapsFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         //TODO refactor
-        ((MainActivity) getActivity()).setActionBarTitle("Map Lookup", true);
-        return inflater.inflate(R.layout.content_maps, container, false);
+        Objects.requireNonNull((MainActivity) getActivity()).setActionBarTitle("My Favourite Listings", true);
+        return inflater.inflate(R.layout.content_favourites, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
+
 }

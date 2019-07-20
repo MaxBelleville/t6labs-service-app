@@ -2,8 +2,8 @@ package com.t6labs.locals.services;
 
 import android.support.annotation.NonNull;
 
-import com.t6labs.locals.models.DescriptionDto;
-import com.t6labs.locals.models.LocalsDto;
+import com.t6labs.locals.ListDescription.DescriptionDto;
+import com.t6labs.locals.Home.LocalsDto;
 
 import java.util.ArrayList;
 

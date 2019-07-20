@@ -1,5 +1,6 @@
-package com.t6labs.locals.adapters;
+package com.t6labs.locals.Home;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,32 +9,30 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.t6labs.locals.R;
-import com.t6labs.locals.models.LocalsDto;
 
 import java.util.ArrayList;
 
 public class LocalsListAdapter extends RecyclerView.Adapter<LocalsListAdapter.LocalsListViewHolder> {
 
     private ArrayList<LocalsDto> localsArrayList;
-    LocalsListingClickListener listener;
+    private LocalsListingClickListener listener;
 
-    public LocalsListAdapter(ArrayList<LocalsDto> localsArrayList, LocalsListingClickListener listener) {
+    LocalsListAdapter(ArrayList<LocalsDto> localsArrayList, LocalsListingClickListener listener) {
         this.localsArrayList = localsArrayList;
         this.listener = listener;
     }
 
     @Override
-    public LocalsListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    @NonNull
+    public LocalsListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.services_list_layout, parent, false);
 
-        final LocalsListViewHolder viewHolder = new LocalsListViewHolder(view);
-
-        return viewHolder;
+        return new LocalsListViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(LocalsListViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull LocalsListViewHolder viewHolder, int i) {
         viewHolder.rating.setRating(3.5f);
         viewHolder.sUser.setText("John Doe");
         //TODO handle empty check somewhere else

@@ -6,10 +6,9 @@
   android:id="@+id/locals_home_navigation_entry_point"
   app:startDestination="@id/localsHomeFragment">
 
-    <!-- same name as the id of the bottom navigation item -->
     <fragment
         android:id="@+id/localsHomeFragment"
-        android:name="com.t6labs.locals.HomeFragment"
+        android:name="com.t6labs.locals.Home.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/content_home">
             <action
@@ -19,7 +18,7 @@
 
     <fragment
         android:id="@+id/listingDescriptionFragment"
-        android:name="com.t6labs.locals.ListingDescriptionFragment"
+        android:name="com.t6labs.locals.ListDescription.ListingDescriptionFragment"
         android:label="content_description"
         tools:layout="@layout/content_description">
 
@@ -29,22 +28,21 @@
             android:defaultValue="1"/>
     </fragment>
 
-    <!-- same name as the id of the bottom navigation item -->
     <fragment
         android:id="@+id/navigation_account"
-        android:name="com.t6labs.locals.NewListingFragment"
+        android:name="com.t6labs.locals.NewListing.NewListingFragment"
         android:label="new listing"
         tools:layout="@layout/content_new_listing" />
 
     <fragment
         android:id="@+id/navigation_map"
-        android:name="com.t6labs.locals.MapsFragment"
+        android:name="com.t6labs.locals.Maps.MapsFragment"
         android:label="map lookup"
         tools:layout="@layout/content_maps" />
 
     <fragment
         android:id="@+id/navigation_favourite"
-        android:name="com.t6labs.locals.FavouritesFragment"
+        android:name="com.t6labs.locals.Favourite.FavouritesFragment"
         android:label="favourites"
         tools:layout="@layout/content_favourites" />
 </navigation>

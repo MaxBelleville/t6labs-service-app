@@ -1,4 +1,4 @@
-package com.t6labs.locals;
+package com.t6labs.locals.Home;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,12 +15,13 @@ import android.view.ViewGroup;
 
 import androidx.navigation.Navigation;
 
-import com.t6labs.locals.adapters.LocalsListAdapter;
-import com.t6labs.locals.models.LocalsDto;
+import com.t6labs.locals.MainActivity;
+import com.t6labs.locals.R;
 import com.t6labs.locals.services.LocalsService;
 import com.t6labs.locals.services.RetrofitInstance;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,7 +56,7 @@ public class HomeFragment extends Fragment {
         unbinder = ButterKnife.bind(this, view);
 
         //TODO refactor
-        ((MainActivity) getActivity()).setActionBarTitle("Local Listings", false);
+        Objects.requireNonNull((MainActivity) getActivity()).setActionBarTitle("Local Listings", false);
 
         return view;
     }
@@ -98,7 +99,7 @@ public class HomeFragment extends Fragment {
         localsListing.setLayoutManager(layoutManager);
         localsListing.setAdapter(localsListAdapter);
 
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getActivity(), layoutManager.getOrientation());
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(Objects.requireNonNull(getActivity()), layoutManager.getOrientation());
 
         //TODO check for null
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getContext(), R.drawable.divider));

@@ -1,4 +1,4 @@
-package com.t6labs.locals;
+package com.t6labs.locals.ListDescription;
 
 import android.os.Bundle;
 
@@ -13,9 +13,12 @@ import android.widget.TextView;
 
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
-import com.t6labs.locals.models.DescriptionDto;
+import com.t6labs.locals.MainActivity;
+import com.t6labs.locals.R;
 import com.t6labs.locals.services.LocalsService;
 import com.t6labs.locals.services.RetrofitInstance;
+
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,6 +49,7 @@ public class ListingDescriptionFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    private String listingId;
 
     @Nullable
     @Override
@@ -56,7 +60,7 @@ public class ListingDescriptionFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         //TODO refactor
-        ((MainActivity) getActivity()).setActionBarTitle("Listing Description", true);
+        Objects.requireNonNull((MainActivity) getActivity()).setActionBarTitle("Listing Description", true);
 
         return view;
     }
@@ -65,13 +69,15 @@ public class ListingDescriptionFragment extends Fragment {
     public void onViewCreated(@NonNull final View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        String id = ListingDescriptionFragmentArgs.fromBundle(getArguments()).getListingId();
+        final ListingDescriptionFragmentArgs args = ListingDescriptionFragmentArgs.fromBundle(Objects.requireNonNull(getArguments()));
+
+        listingId = args.getListingId();
 
         carouselView.setImageListener(imageListener);
         carouselView.setPageCount(sampleImages.length);
 
         LocalsService localsService = RetrofitInstance.getRetrofitInstance().create(LocalsService.class);
-        Call<DescriptionDto> descriptionDtoCall = localsService.getLocalListingDescription(id);
+        Call<DescriptionDto> descriptionDtoCall = localsService.getLocalListingDescription(listingId);
 
         descriptionDtoCall.enqueue(new Callback<DescriptionDto>() {
             @Override
@@ -81,7 +87,7 @@ public class ListingDescriptionFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<DescriptionDto> call, Throwable t) {
+            public void onFailure(@NonNull Call<DescriptionDto> call,@NonNull Throwable t) {
                 Log.d("ERROR", t.getMessage());
             }
         });
