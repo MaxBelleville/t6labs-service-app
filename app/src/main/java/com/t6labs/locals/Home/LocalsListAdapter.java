@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.t6labs.locals.Dtos.LocalsDto;
 import com.t6labs.locals.R;
 
 import java.util.ArrayList;

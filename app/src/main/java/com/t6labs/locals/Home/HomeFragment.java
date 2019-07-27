@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import androidx.navigation.Navigation;
 
+import com.t6labs.locals.Dtos.LocalsDto;
 import com.t6labs.locals.MainActivity;
 import com.t6labs.locals.R;
 import com.t6labs.locals.services.LocalsService;
@@ -57,7 +58,7 @@ public class HomeFragment extends Fragment {
 
         //TODO refactor
         Objects.requireNonNull((MainActivity) getActivity()).setActionBarTitle("Local Listings", false);
-
+        Objects.requireNonNull((MainActivity) getActivity()).bottomNavVisibility(true);
         return view;
     }
 
