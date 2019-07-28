@@ -1,4 +1,4 @@
-package com.t6labs.locals.ListDescription;
+package com.t6labs.locals.Dtos;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -6,6 +6,13 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class DescriptionDto implements Serializable {
+
+    public DescriptionDto(String title,String description){
+        this.title=title;
+        this.description=description;
+        this.username="Test User";
+    }
+
     public String getId() {
         return id;
     }
@@ -37,6 +44,7 @@ public class DescriptionDto implements Serializable {
     public String getDistance() {
         return distance;
     }
+
 
     @SerializedName("id")
     @Expose

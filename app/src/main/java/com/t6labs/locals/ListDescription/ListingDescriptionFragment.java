@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
+import com.t6labs.locals.Dtos.DescriptionDto;
 import com.t6labs.locals.MainActivity;
 import com.t6labs.locals.R;
 import com.t6labs.locals.services.LocalsService;
