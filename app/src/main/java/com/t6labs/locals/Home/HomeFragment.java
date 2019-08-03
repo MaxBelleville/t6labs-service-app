@@ -54,7 +54,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.content_home, container, false);
-        unbinder = ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);//Testing
 
         //TODO refactor
         Objects.requireNonNull((MainActivity) getActivity()).setActionBarTitle("Local Listings", false);
