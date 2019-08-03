@@ -10,6 +10,7 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.navigation.NavController;
@@ -66,7 +67,10 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigationView);
         setupWithNavController(bottomNavigationView,navController);
     }
-
+    public void bottomNavVisibility(boolean isVisible){
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigationView);
+        bottomNavigationView.setVisibility(isVisible ? View.VISIBLE : View.GONE);
+    }
     public void setActionBarTitle(@NonNull String title, boolean showBackButton) {
         toolbarTitle.setText(title);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(showBackButton);
