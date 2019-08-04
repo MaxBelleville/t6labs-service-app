@@ -4,17 +4,18 @@ import android.support.annotation.NonNull;
 
 import com.t6labs.locals.Dtos.DescriptionDto;
 import com.t6labs.locals.Dtos.LocalsDto;
+import com.t6labs.locals.Dtos.NewListingRequest;
 
 import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface LocalsService {
+
     @GET("listings")
     Call<ArrayList<LocalsDto>> getLocalsListing();
 
@@ -22,6 +23,8 @@ public interface LocalsService {
     Call<DescriptionDto> getLocalListingDescription(
             @Path("id")
             @NonNull final String id);
+
     @POST("listing")
-    Call<DescriptionDto> postLocalListing(@Body DescriptionDto descriptionDto);
+    Call<DescriptionDto> postLocalListing(@Body @NonNull NewListingRequest request);
+
 }

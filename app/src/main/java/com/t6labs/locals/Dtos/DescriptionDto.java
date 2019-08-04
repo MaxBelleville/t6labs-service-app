@@ -7,12 +7,6 @@ import java.io.Serializable;
 
 public class DescriptionDto implements Serializable {
 
-    public DescriptionDto(String title,String description){
-        this.title=title;
-        this.description=description;
-        this.username="Test User";
-    }
-
     public String getId() {
         return id;
     }
