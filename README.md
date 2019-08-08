@@ -52,7 +52,7 @@ See also the list of (link here) who participated in this project.
 
 ## License
 
-This project is licensed under the MIT License - see the (link here) file for details
+This project is licensed under the MIT License - see the **[LICENSE](https://github.com/MaxBelleville/t6labs-service-app/blob/master/LICENSE)**
 
 ## Acknowledgments
 
