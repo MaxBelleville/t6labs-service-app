@@ -40,12 +40,13 @@ Please read (link here) for details on our code of conduct, and the process for 
 
 ## Authors
 
-* **[Max](https://github.com/MaxBelleville)** - *Front End*
-* **[Rajeeth](https://github.com/McRaj)** - *Front End*
-* **[Vinorth](https://github.com/vinorth)** - *Back End Api*
-* **[Adshayan](https://github.com/adshayanB)** - *?*
-* **[Ahmed](https://github.com/KingSomaan12)** - *?*
-* **[Mehadi](https://github.com/KnightOfHonour12)** - *?*
+* **[Max](https://github.com/MaxBelleville)** - *Front End Dev*
+* **[Rajeeth](https://github.com/McRaj)** - *Lead Front End Dev*
+* **[Vinorth](https://github.com/vinorth)** - *Lead Back End Dev*
+* **[Adshayan](https://github.com/adshayanB)** - *Front End Dev*
+* **[Ahmed](https://github.com/KingSomaan12)** - *Back End Dev*
+* **[Mehadi](https://github.com/KnightOfHonour12)** - *Front End Dev*
+* **[Aaliyan](https://github.com/Ayylien8)** - *Back End Dev*
 
 See also the list of (link here) who participated in this project.
 
