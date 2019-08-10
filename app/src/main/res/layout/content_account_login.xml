@@ -25,6 +25,23 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        android:text="Password: "
+        android:textSize="20sp"
+        android:layout_marginTop="180sp"
+        android:layout_marginLeft="10sp" />
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter password"
+        android:layout_marginTop="210sp"
+        android:inputType="textWebPassword"/>
+    <Button
+        android:id="@+id/button_id"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="login"
+        android:layout_marginTop="290sp" />
+    />
 
 </RelativeLayout>
