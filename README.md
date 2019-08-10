@@ -1,4 +1,4 @@
-# Helping Hands(Title - Work In Progress)
+# Local Services (Title - Work In Progress)
 
 An android application to aid in the development and growth of local businesses
 
