@@ -31,15 +31,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFragment extends Fragment {
 
+public class AccountLoginScreen extends Fragment{
     @BindView(R.id.myList)
     RecyclerView localsListing;
 
     private LocalsListAdapter localsListAdapter;
     private Unbinder unbinder;
 
-    public HomeFragment() {
+    public AccountLoginScreen() {
 
     }
 
@@ -76,7 +76,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(@NonNull Call<ArrayList<LocalsDto>> call, @NonNull Throwable t) {
-                Log.d(HomeFragment.this.getClass().getName(), t.getMessage());
+                Log.d(AccountLoginScreen.this.getClass().getName(), t.getMessage());
             }
         });
     }
