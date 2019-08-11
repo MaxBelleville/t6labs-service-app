@@ -1,6 +1,7 @@
 package com.t6labs.locals.services;
 
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import com.t6labs.locals.Dtos.DescriptionDto;
 import com.t6labs.locals.Dtos.LocalsDto;
