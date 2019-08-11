@@ -1,12 +1,14 @@
 package com.t6labs.locals.Home;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.t6labs.locals.Dtos.LocalsDto;
 import com.t6labs.locals.R;
