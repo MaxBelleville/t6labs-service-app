@@ -5,8 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,8 +44,9 @@ public class LoginFragment extends Fragment {
         signInClient = GoogleSignIn.getClient(getActivity(), gso);
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity());
         //if account isn't null login and send to new listing
-
-        SignInButton signInButton = getView().findViewById(R.id.sign_in_button);
+        if(account!=null)
+           Navigation.findNavController(getView()).navigate(LoginFragmentDirections.actionLoginToNewListing());
+        SignInButton signInButton = getView().findViewById(R.id.google_sign_in);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +61,8 @@ public class LoginFragment extends Fragment {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
         try {
             GoogleSignInAccount account = task.getResult(ApiException.class);
-            //Send to new listing.
+            if(account!=null)
+                Navigation.findNavController(getView()).navigate(LoginFragmentDirections.actionLoginToNewListing());
         } catch (ApiException e) { }
 
     }
