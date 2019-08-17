@@ -19,8 +19,8 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.textfield.TextInputEditText;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
-import com.t6labs.locals.Dtos.DescriptionDto;
-import com.t6labs.locals.Dtos.NewListingRequest;
+import com.t6labs.locals.Common.DescriptionDto;
+import com.t6labs.locals.Common.NewListingRequest;
 import com.t6labs.locals.MainActivity;
 import com.t6labs.locals.R;
 import com.t6labs.locals.services.LocalsService;
@@ -38,6 +38,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+//TODO implement view model
 public class NewListingFragment extends Fragment {
 
     @BindView(R.id.carouselView)

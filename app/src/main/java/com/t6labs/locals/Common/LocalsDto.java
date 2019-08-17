@@ -1,4 +1,4 @@
-package com.t6labs.locals.Dtos;
+package com.t6labs.locals.Common;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

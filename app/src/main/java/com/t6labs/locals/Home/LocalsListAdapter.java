@@ -10,17 +10,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.t6labs.locals.Dtos.LocalsDto;
+import com.t6labs.locals.Common.LocalsDto;
 import com.t6labs.locals.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class LocalsListAdapter extends RecyclerView.Adapter<LocalsListAdapter.LocalsListViewHolder> {
 
-    private ArrayList<LocalsDto> localsArrayList;
+    private List<LocalsDto> localsArrayList;
     private LocalsListingClickListener listener;
 
-    LocalsListAdapter(ArrayList<LocalsDto> localsArrayList, LocalsListingClickListener listener) {
+    LocalsListAdapter(List<LocalsDto> localsArrayList, LocalsListingClickListener listener) {
         this.localsArrayList = localsArrayList;
         this.listener = listener;
     }
