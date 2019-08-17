@@ -10,18 +10,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.t6labs.locals.Dtos.LocalsDto;
+import com.t6labs.locals.Common.LocalsDto;
 import com.t6labs.locals.MainActivity;
 import com.t6labs.locals.R;
 import com.t6labs.locals.services.LocalsService;
 import com.t6labs.locals.services.RetrofitInstance;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -38,6 +41,10 @@ public class HomeFragment extends Fragment {
 
     private LocalsListAdapter localsListAdapter;
     private Unbinder unbinder;
+    private HomeViewModel viewModel;
+
+    @NonNull
+    private Observer<List<LocalsDto>> listingObserver = this::onListingUpdated;
 
     public HomeFragment() {
 
@@ -46,6 +53,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        viewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
     }
 
     @Override
@@ -67,11 +75,12 @@ public class HomeFragment extends Fragment {
 
         LocalsService localsService = RetrofitInstance.getRetrofitInstance().create(LocalsService.class);
         Call<ArrayList<LocalsDto>> call = localsService.getLocalsListing();
+        viewModel.getListing().observe(this, listingObserver);
 
         call.enqueue(new Callback<ArrayList<LocalsDto>>() {
             @Override
             public void onResponse(@NonNull Call<ArrayList<LocalsDto>> call, @NonNull Response<ArrayList<LocalsDto>> response) {
-                initLocalsListingRecyclerView(response.body());
+                viewModel.setListing(response.body());
             }
 
             @Override
@@ -85,9 +94,15 @@ public class HomeFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        viewModel.getListing().removeObserver(listingObserver);
     }
 
-    private void initLocalsListingRecyclerView(final ArrayList<LocalsDto> localsDto) {
+    private void onListingUpdated(List<LocalsDto> listing) {
+        //TODO don't init recycler view here, only update data
+        initLocalsListingRecyclerView(listing);
+    }
+
+    private void initLocalsListingRecyclerView(final List<LocalsDto> localsDto) {
 
         localsListAdapter = new LocalsListAdapter(localsDto, (v, position) -> {
             String id = localsDto.get(position).getId();
