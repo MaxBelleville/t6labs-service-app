@@ -4,7 +4,8 @@ An android application to aid in the development and growth of local businesses
 
 ### Prerequisites
 
-TODO: fill this in
+Latest Android Studio
+Java 
 
 ```
 Give examples
@@ -12,17 +13,8 @@ Give examples
 
 ### Installing
 
-TODO: fill this in
+clone project and open in android studio
 
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
 
 End with an example of getting some data out of the system or using it for a little demo
 
