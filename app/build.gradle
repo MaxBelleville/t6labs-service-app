@@ -38,12 +38,12 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$project.loging_interceptor"
     implementation "com.jakewharton:butterknife:$project.butterknife"
     annotationProcessor "com.jakewharton:butterknife-compiler:$project.butterknife"
-    implementation "com.google.android.gms:play-services-maps:$project.googlemaps"
+    implementation "com.google.android.gms:play-services-maps:$project.googleservice"
+    implementation "com.google.android.gms:play-services-auth:$project.googleservice"
     implementation "androidx.lifecycle:lifecycle-extensions:$project.lifecycle"
     implementation "androidx.lifecycle:lifecycle-viewmodel:$project.lifecycle"
 
     testImplementation "junit:junit:$project.junit"
     androidTestImplementation "androidx.test:runner:$project.runner"
     androidTestImplementation "androidx.test.espresso:espresso-core:$project.espresso"
-
 }

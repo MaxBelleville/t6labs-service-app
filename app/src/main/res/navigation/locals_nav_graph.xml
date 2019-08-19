@@ -7,16 +7,6 @@
   app:startDestination="@id/localsHomeFragment">
 
     <fragment
-        android:id="@+id/localsHomeFragment"
-        android:name="com.t6labs.locals.Home.HomeFragment"
-        android:label="HomeFragment"
-        tools:layout="@layout/content_home">
-            <action
-                android:id="@+id/action_home_fragment_to_DescriptionFragment"
-                app:destination="@id/listingDescriptionFragment" />
-    </fragment>
-
-    <fragment
         android:id="@+id/listingDescriptionFragment"
         android:name="com.t6labs.locals.ListDescription.ListingDescriptionFragment"
         android:label="content_description"
@@ -28,10 +18,11 @@
             android:defaultValue="1"/>
     </fragment>
 
+
     <fragment
-        android:id="@+id/navigation_account"
+        android:id="@+id/newListingFragment"
         android:name="com.t6labs.locals.NewListing.NewListingFragment"
-        android:label="new listing"
+        android:label="content_new_listing"
         tools:layout="@layout/content_new_listing" />
 
     <fragment
@@ -39,6 +30,27 @@
         android:name="com.t6labs.locals.Maps.MapsFragment"
         android:label="map lookup"
         tools:layout="@layout/content_maps" />
+
+
+    <fragment
+        android:id="@+id/localsHomeFragment"
+        android:name="com.t6labs.locals.Home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/content_home">
+        <action
+            android:id="@+id/action_home_fragment_to_DescriptionFragment"
+            app:destination="@id/listingDescriptionFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_account"
+        android:name="com.t6labs.locals.Login.LoginFragment"
+        android:label="login"
+        tools:layout="@layout/content_login">
+        <action
+            android:id="@+id/action_login_to_NewListing"
+            app:destination="@id/newListingFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_favourite"

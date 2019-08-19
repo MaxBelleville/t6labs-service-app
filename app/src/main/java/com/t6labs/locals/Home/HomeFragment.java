@@ -65,8 +65,8 @@ public class HomeFragment extends Fragment {
         unbinder = ButterKnife.bind(this, view);
 
         //TODO refactor
-        Objects.requireNonNull((MainActivity) getActivity()).setActionBarTitle("Local Listings", false);
-        Objects.requireNonNull((MainActivity) getActivity()).bottomNavVisibility(true);
+       ((MainActivity) requireActivity()).setActionBarTitle("Local Listings", false);
+       ((MainActivity) requireActivity()).bottomNavVisibility(true);
         return view;
     }
 

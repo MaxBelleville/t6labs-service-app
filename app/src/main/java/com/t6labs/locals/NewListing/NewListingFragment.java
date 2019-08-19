@@ -84,27 +84,27 @@ public class NewListingFragment extends Fragment {
     }
 
     @OnClick(R.id.newImage)
-    public void newImage(View view) {
+    void newImage(View view) {
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(photoPickerIntent, 1);
         carouselView.setVisibility(View.VISIBLE);
     }
 
     @OnClick(R.id.postNew)
-    public void postNew(View view) {
+    void postNew(View view) {
         String title = newLTEdit.getText().toString();
         String shortDesc = newSDEdit.getText().toString();
         LocalsService localsService = RetrofitInstance.getRetrofitInstance().create(LocalsService.class);
         Call<DescriptionDto> descriptionDtoCall = localsService.postLocalListing(new NewListingRequest(title, shortDesc));
         descriptionDtoCall.enqueue(new Callback<DescriptionDto>() {
             @Override
-            public void onResponse(Call<DescriptionDto> call, Response<DescriptionDto> response) {
+            public void onResponse(@NonNull Call<DescriptionDto> call, @NonNull Response<DescriptionDto> response) {
                 Log.d("Tag", response.body().getTitle());
                 //TODO go to confirmation screen
             }
 
             @Override
-            public void onFailure(Call<DescriptionDto> call, Throwable t) {
+            public void onFailure(@NonNull Call<DescriptionDto> call, @NonNull Throwable t) {
                 //TODO handle error
                 Log.d("Error",t.getMessage());
             }
@@ -129,6 +129,7 @@ public class NewListingFragment extends Fragment {
             }
 
         } else {
+            updateCarsouel();
             Toast.makeText(getActivity(), "You haven't picked Image", Toast.LENGTH_LONG).show();
         }
     }
