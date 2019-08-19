@@ -1,24 +1,26 @@
 package com.t6labs.locals.Home;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.t6labs.locals.Dtos.LocalsDto;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.t6labs.locals.Common.LocalsDto;
 import com.t6labs.locals.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class LocalsListAdapter extends RecyclerView.Adapter<LocalsListAdapter.LocalsListViewHolder> {
 
-    private ArrayList<LocalsDto> localsArrayList;
+    private List<LocalsDto> localsArrayList;
     private LocalsListingClickListener listener;
 
-    LocalsListAdapter(ArrayList<LocalsDto> localsArrayList, LocalsListingClickListener listener) {
+    LocalsListAdapter(List<LocalsDto> localsArrayList, LocalsListingClickListener listener) {
         this.localsArrayList = localsArrayList;
         this.listener = listener;
     }

@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +24,18 @@ import com.t6labs.locals.R;
 
 import java.util.Objects;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 public class LoginFragment extends Fragment {
-    GoogleSignInClient signInClient;
+
+    @BindView(R.id.google_sign_in)
+    SignInButton signInButton;
+
+    private GoogleSignInClient signInClient;
+    private Unbinder unbinder;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
@@ -32,38 +43,49 @@ public class LoginFragment extends Fragment {
 
         //TODO refactor
         Objects.requireNonNull((MainActivity) getActivity()).setActionBarTitle("Login", false);
-        return inflater.inflate(R.layout.content_login, container, false);
+        View view = inflater.inflate(R.layout.content_login, container, false);
+        unbinder = ButterKnife.bind(this, view);
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        initSignIn();
+    }
+
+    private void initSignIn() {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
-        signInClient = GoogleSignIn.getClient(getActivity(), gso);
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity());
-        //if account isn't null login and send to new listing
-        if(account!=null)
-           Navigation.findNavController(getView()).navigate(LoginFragmentDirections.actionLoginToNewListing());
-        SignInButton signInButton = getView().findViewById(R.id.google_sign_in);
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent signInIntent = signInClient.getSignInIntent();
-                startActivityForResult(signInIntent, 1);
-            }
+
+        signInClient = GoogleSignIn.getClient(requireActivity(), gso);
+
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(requireActivity());
+        if(account!=null) {
+            Navigation.findNavController(getParentFragment().getView()).navigate(LoginFragmentDirections.actionLoginToNewListing());
+        }
+
+        signInButton.setOnClickListener(v -> {
+            Intent signInIntent = signInClient.getSignInIntent();
+            startActivityForResult(signInIntent, 1);
         });
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         super.onActivityResult(requestCode, resultCode, data);
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+        Navigation.findNavController(getView()).navigate(LoginFragmentDirections.actionLoginToNewListing());
+        Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
         try {
             GoogleSignInAccount account = task.getResult(ApiException.class);
             if(account!=null)
                 Navigation.findNavController(getView()).navigate(LoginFragmentDirections.actionLoginToNewListing());
-        } catch (ApiException e) { }
-
+            else
+                Log.d("GOOGLESIGNIN","no account found");
+        } catch (ApiException e) {
+           Log.d("GOOGLESIGNIN",e.getMessage());
+        }
     }
 }

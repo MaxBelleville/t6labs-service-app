@@ -4,10 +4,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.google.android.material.textfield.TextInputEditText;
-import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,10 +12,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.textfield.TextInputEditText;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
-import com.t6labs.locals.Dtos.DescriptionDto;
-import com.t6labs.locals.Dtos.NewListingRequest;
+import com.t6labs.locals.Common.DescriptionDto;
+import com.t6labs.locals.Common.NewListingRequest;
 import com.t6labs.locals.MainActivity;
 import com.t6labs.locals.R;
 import com.t6labs.locals.services.LocalsService;
@@ -37,6 +38,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+//TODO implement view model
 public class NewListingFragment extends Fragment {
 
     @BindView(R.id.carouselView)
@@ -82,27 +84,27 @@ public class NewListingFragment extends Fragment {
     }
 
     @OnClick(R.id.newImage)
-    public void newImage(View view) {
+    void newImage(View view) {
         Intent photoPickerIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(photoPickerIntent, 1);
         carouselView.setVisibility(View.VISIBLE);
     }
 
     @OnClick(R.id.postNew)
-    public void postNew(View view) {
+    void postNew(View view) {
         String title = newLTEdit.getText().toString();
         String shortDesc = newSDEdit.getText().toString();
         LocalsService localsService = RetrofitInstance.getRetrofitInstance().create(LocalsService.class);
         Call<DescriptionDto> descriptionDtoCall = localsService.postLocalListing(new NewListingRequest(title, shortDesc));
         descriptionDtoCall.enqueue(new Callback<DescriptionDto>() {
             @Override
-            public void onResponse(Call<DescriptionDto> call, Response<DescriptionDto> response) {
+            public void onResponse(@NonNull Call<DescriptionDto> call, @NonNull Response<DescriptionDto> response) {
                 Log.d("Tag", response.body().getTitle());
                 //TODO go to confirmation screen
             }
 
             @Override
-            public void onFailure(Call<DescriptionDto> call, Throwable t) {
+            public void onFailure(@NonNull Call<DescriptionDto> call, @NonNull Throwable t) {
                 //TODO handle error
                 Log.d("Error",t.getMessage());
             }

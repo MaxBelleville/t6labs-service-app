@@ -4,18 +4,19 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Objects;
 
@@ -78,6 +79,20 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupWithNavController(@NonNull final BottomNavigationView bottomNavigationView,
                                                @NonNull final NavController navController) {
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.localsHomeFragment:
+                    break;
+                case R.id.navigation_map:
+                    break;
+                case R.id.navigation_account:
+                    break;
+                case R.id.navigation_favourite:
+                    break;
+            }
+            return true;
+        });
 
         NavigationUI.setupWithNavController(bottomNavigationView,navController);
     }

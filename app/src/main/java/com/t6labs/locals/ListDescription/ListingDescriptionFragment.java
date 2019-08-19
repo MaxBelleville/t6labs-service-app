@@ -2,18 +2,20 @@ package com.t6labs.locals.ListDescription;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
-import com.t6labs.locals.Dtos.DescriptionDto;
+import com.t6labs.locals.Common.DescriptionDto;
 import com.t6labs.locals.MainActivity;
 import com.t6labs.locals.R;
 import com.t6labs.locals.services.LocalsService;
@@ -28,6 +30,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.internal.EverythingIsNonNull;
 
+//TODO implement view model
 public class ListingDescriptionFragment extends Fragment {
 
     //TODO replace with images from api
