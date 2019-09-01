@@ -42,6 +42,7 @@ dependencies {
     implementation "com.google.android.gms:play-services-auth:$project.googleservice"
     implementation "androidx.lifecycle:lifecycle-extensions:$project.lifecycle"
     implementation "androidx.lifecycle:lifecycle-viewmodel:$project.lifecycle"
+    implementation "com.facebook.android:facebook-login:$project.facebook"
 
     testImplementation "junit:junit:$project.junit"
     androidTestImplementation "androidx.test:runner:$project.runner"

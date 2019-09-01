@@ -9,7 +9,7 @@ import com.t6labs.locals.Common.LocalsDto;
 
 import java.util.List;
 
- class HomeViewModel extends ViewModel {
+public class HomeViewModel extends ViewModel {
 
     private MutableLiveData<List<LocalsDto>> listMutableLiveData = new MutableLiveData<>();
 

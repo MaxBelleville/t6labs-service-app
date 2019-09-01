@@ -20,4 +20,6 @@
     <string name="label_tag">Tag</string>
     <string name="title_activity_maps">Map</string>
     <string name="login_title">Login</string>
+    <string name="facebook_app_id">2236447399818046</string>
+    <string name="fb_login_protocol_scheme">fb2236447399818046</string>
 </resources>
