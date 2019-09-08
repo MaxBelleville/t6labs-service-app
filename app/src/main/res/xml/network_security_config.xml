@@ -2,5 +2,7 @@
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">t6-api.azurewebsites.net</domain>
+        <domain includeSubdomains="true">private-a4fc5e-t6labs.apiary-mock.com</domain>
+        <domain includeSubdomains="true">res.cloudinary.com/</domain>
     </domain-config>
 </network-security-config>
