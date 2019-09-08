@@ -7,7 +7,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitInstance {
     private static Retrofit retrofit;
+    // TODO: 2019-09-08 get BASE_URL from enpoints xml using mock vs relase flavours
     private static final String BASE_URL = "http://t6-api.azurewebsites.net/";
+    //private static final String BASE_URL = "http://private-a4fc5e-t6labs.apiary-mock.com/";
     private static HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
     private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 

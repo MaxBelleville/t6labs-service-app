@@ -2,9 +2,12 @@ package com.t6labs.locals.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 
 import android.util.Log;
@@ -14,10 +17,6 @@ import android.view.ViewGroup;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -38,6 +37,8 @@ import butterknife.Unbinder;
 
 public class LoginFragment extends Fragment {
 
+    private static final String TAG = LoginFragment.class.getName();
+
     @BindView(R.id.google_sign_in)
     SignInButton signInButton;
 
@@ -47,6 +48,16 @@ public class LoginFragment extends Fragment {
     private GoogleSignInClient signInClient;
     private Unbinder unbinder;
     private CallbackManager callbackManager;
+    private LoginViewModel loginViewModel;
+
+    @NonNull
+    private Observer<Boolean> loginStateObserver = this::onLogInStateChange;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -63,38 +74,29 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initGoogle();
-        initFacebook();
+        initGoogleLogin();
+        initFaceBookLogin();
+        loginViewModel.getIsLoggedIn().observe(this, loginStateObserver);
     }
-    private void initFacebook(){
+
+    @Override
+    public void onDestroyView(){
+        super.onDestroyView();
+        unbinder.unbind();
+        loginViewModel.getIsLoggedIn().removeObserver(loginStateObserver);
+    }
+
+    private void initFaceBookLogin() {
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
-        boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
-        if(!isLoggedIn) {
+        if (accessToken == null || accessToken.isExpired()) {
             callbackManager = CallbackManager.Factory.create();
             loginButton.setPermissions(Arrays.asList("email"));
             loginButton.setFragment(this);
-            loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-                @Override
-                public void onSuccess(LoginResult loginResult) {
-                    Navigation.findNavController(getView()).navigate(LoginFragmentDirections.actionLoginToNewListing());
-                }
-
-                @Override
-                public void onCancel() {
-                    // App code
-                }
-
-                @Override
-                public void onError(FacebookException exception) {
-                    // App code
-                }
-            });
-        }
-        else {
-            Navigation.findNavController(getView()).navigate(LoginFragmentDirections.actionLoginToNewListing());
+            loginButton.registerCallback(callbackManager, loginViewModel.getFacebookCallback());
         }
     }
-    private void initGoogle() {
+
+    private void initGoogleLogin() {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
@@ -102,8 +104,9 @@ public class LoginFragment extends Fragment {
         signInClient = GoogleSignIn.getClient(requireActivity(), gso);
 
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(requireActivity());
-        if(account!=null) {
-            Navigation.findNavController(getParentFragment().getView()).navigate(LoginFragmentDirections.actionLoginToNewListing());
+
+        if (account != null) {
+            loginViewModel.setLoggedIn(Boolean.TRUE);
         }
 
         signInButton.setOnClickListener(v -> {
@@ -119,12 +122,19 @@ public class LoginFragment extends Fragment {
         Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
         try {
             GoogleSignInAccount account = task.getResult(ApiException.class);
-            if(account!=null)
-                Navigation.findNavController(getParentFragment().getView()).navigate(LoginFragmentDirections.actionLoginToNewListing());
+            if (account != null) {
+                loginViewModel.login("google","sdlfkjslfj");
+            }
             else
-                Log.d("GOOGLESIGNIN","no account found");
+                Log.d(TAG, "onActivityResult: no acount");
         } catch (ApiException e) {
-           Log.d("GOOGLESIGNIN",e.getMessage());
+            Log.d(TAG, e.getMessage());
+        }
+    }
+
+    private void onLogInStateChange(Boolean isLoggedIn) {
+        if (isLoggedIn) {
+            Navigation.findNavController(getView()).navigate(LoginFragmentDirections.actionLoginToNewListing());
         }
     }
 }
