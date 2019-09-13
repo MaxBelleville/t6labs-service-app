@@ -1,5 +1,6 @@
 package com.t6labs.locals.Login;
 
+import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -37,8 +38,8 @@ public class LoginViewModel extends ViewModel {
         return new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                //todo handle signin
-                login("fb","lskdjfls");
+                //todo handle facebook signin
+                //login("fb","lskdjfls");
                 setLoggedIn(Boolean.TRUE);
                 
             }
@@ -56,8 +57,9 @@ public class LoginViewModel extends ViewModel {
         };
     }
 
-    void login(String type, String token) {
-        LocalsService localsService = RetrofitInstance.getRetrofitInstance().create(LocalsService.class);
+    // TODO: 2019-09-13 don't pass context here, use provider design pattern
+    void login(@NonNull Context context, @NonNull String type, @NonNull String token) {
+        LocalsService localsService = RetrofitInstance.getRetrofitInstance(context).create(LocalsService.class);
         Call<UserProfileDto> loginCall = localsService.login(token,new LoginRequest(type));
         loginCall.enqueue(new Callback<UserProfileDto>() {
             @Override

@@ -38,6 +38,7 @@ import butterknife.Unbinder;
 public class LoginFragment extends Fragment {
 
     private static final String TAG = LoginFragment.class.getName();
+    private static final String TYPE_GOOGLE = "goolge";
 
     @BindView(R.id.google_sign_in)
     SignInButton signInButton;
@@ -80,7 +81,7 @@ public class LoginFragment extends Fragment {
     }
 
     @Override
-    public void onDestroyView(){
+    public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
         loginViewModel.getIsLoggedIn().removeObserver(loginStateObserver);
@@ -123,12 +124,11 @@ public class LoginFragment extends Fragment {
         try {
             GoogleSignInAccount account = task.getResult(ApiException.class);
             if (account != null) {
-                loginViewModel.login("google","sdlfkjslfj");
-            }
-            else
+                loginViewModel.login(requireContext(), TYPE_GOOGLE, account.getIdToken());
+            } else
                 Log.d(TAG, "onActivityResult: no acount");
         } catch (ApiException e) {
-            Log.d(TAG, e.getMessage());
+            Log.d(TAG, "sign-in fail: " + e.getMessage());
         }
     }
 

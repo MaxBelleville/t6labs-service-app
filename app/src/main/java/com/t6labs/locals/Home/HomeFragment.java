@@ -73,7 +73,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        LocalsService localsService = RetrofitInstance.getRetrofitInstance().create(LocalsService.class);
+        LocalsService localsService = RetrofitInstance.getRetrofitInstance(requireContext()).create(LocalsService.class);
         Call<ArrayList<LocalsDto>> call = localsService.getLocalsListing();
         viewModel.getListing().observe(this, listingObserver);
 
