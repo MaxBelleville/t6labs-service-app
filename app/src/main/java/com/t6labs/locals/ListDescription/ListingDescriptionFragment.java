@@ -80,7 +80,7 @@ public class ListingDescriptionFragment extends Fragment {
         carouselView.setImageListener(imageListener);
         carouselView.setPageCount(sampleImages.length);
 
-        LocalsService localsService = RetrofitInstance.getRetrofitInstance().create(LocalsService.class);
+        LocalsService localsService = RetrofitInstance.getRetrofitInstance(requireContext()).create(LocalsService.class);
         Call<DescriptionDto> descriptionDtoCall = localsService.getLocalListingDescription(listingId);
 
         descriptionDtoCall.enqueue(new Callback<DescriptionDto>() {

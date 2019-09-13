@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: "androidx.navigation.safeargs"
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 28
@@ -11,12 +12,29 @@ android {
         versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "server"
+
+    productFlavors {
+
+        prod {
+            dimension "server"
+            applicationId "com.t6labs.locals"
+        }
+
+        mock {
+            dimension "server"
+            applicationIdSuffix ".mock"
+        }
+    }
+
     compileOptions {
         sourceCompatibility 1.8
         targetCompatibility 1.8
@@ -28,8 +46,8 @@ dependencies {
 
     implementation "androidx.constraintlayout:constraintlayout:$project.constraintlayout"
     implementation "com.google.android.material:material:$project.material"
-    implementation "androidx.navigation:navigation-fragment:$project.navigation"
-    implementation "androidx.navigation:navigation-ui:$project.navigation"
+    implementation "androidx.navigation:navigation-fragment:$project.architecture"
+    implementation "androidx.navigation:navigation-ui:$project.architecture"
     implementation "androidx.recyclerview:recyclerview:$project.recyclerview"
     implementation "com.synnapps:carouselview:$project.carouselview"
     implementation "com.google.code.gson:gson:$project.gson"
@@ -40,9 +58,10 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:$project.butterknife"
     implementation "com.google.android.gms:play-services-maps:$project.googleservice"
     implementation "com.google.android.gms:play-services-auth:$project.googleservice"
-    implementation "androidx.lifecycle:lifecycle-extensions:$project.lifecycle"
-    implementation "androidx.lifecycle:lifecycle-viewmodel:$project.lifecycle"
+    implementation "androidx.lifecycle:lifecycle-extensions:$project.architecture"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$project.architecture"
     implementation "com.facebook.android:facebook-login:$project.facebook"
+    implementation "com.google.firebase:firebase-config:$project.firebase"
 
     testImplementation "junit:junit:$project.junit"
     androidTestImplementation "androidx.test:runner:$project.runner"

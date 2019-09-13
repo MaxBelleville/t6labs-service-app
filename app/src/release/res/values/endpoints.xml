@@ -1,0 +1,3 @@
+<resources>
+    <string name="base_url" translatable="false">http://t6-api.azurewebsites.net/</string>
+</resources>
