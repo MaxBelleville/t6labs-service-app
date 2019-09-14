@@ -126,7 +126,7 @@ public class LoginFragment extends Fragment {
             if (account != null) {
                 loginViewModel.login(requireContext(), TYPE_GOOGLE, account.getIdToken());
             } else
-                Log.d(TAG, "onActivityResult: no acount");
+                Log.d(TAG, "onActivityResult: no account");
         } catch (ApiException e) {
             Log.d(TAG, "sign-in fail: " + e.getMessage());
         }
@@ -134,7 +134,7 @@ public class LoginFragment extends Fragment {
 
     private void onLogInStateChange(Boolean isLoggedIn) {
         if (isLoggedIn) {
-            Navigation.findNavController(getView()).navigate(LoginFragmentDirections.actionLoginToNewListing());
+            Navigation.findNavController(getView()).navigate(LoginFragmentDirections.actionLoginToAccount());
         }
     }
 }

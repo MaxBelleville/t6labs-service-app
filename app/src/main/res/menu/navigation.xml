@@ -17,7 +17,7 @@
         android:title="Map"/>
 
     <item
-        android:id="@+id/navigation_account"
+        android:id="@+id/navigation_login"
         android:icon="@drawable/ic_person_black_24dp"
         android:title="Account"/>
 

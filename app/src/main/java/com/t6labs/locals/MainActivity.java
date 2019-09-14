@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.navigation_map:
                     break;
-                case R.id.navigation_account:
+                case R.id.navigation_login:
                     break;
                 case R.id.navigation_favourite:
                     break;

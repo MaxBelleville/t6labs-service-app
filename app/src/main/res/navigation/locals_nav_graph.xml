@@ -43,13 +43,13 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_account"
+        android:id="@+id/navigation_login"
         android:name="com.t6labs.locals.Login.LoginFragment"
         android:label="login"
         tools:layout="@layout/content_login">
         <action
-            android:id="@+id/action_login_to_NewListing"
-            app:destination="@id/newListingFragment" />
+            android:id="@+id/action_login_to_Account"
+            app:destination="@id/accountFragment" />
     </fragment>
 
     <fragment
@@ -57,4 +57,13 @@
         android:name="com.t6labs.locals.Favourite.FavouritesFragment"
         android:label="favourites"
         tools:layout="@layout/content_favourites" />
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.t6labs.locals.Account.AccountFragment"
+        android:label="account"
+        tools:layout="@layout/content_account">
+        <action
+            android:id="@+id/action_account_to_NewListing"
+            app:destination="@id/newListingFragment" />
+    </fragment>
 </navigation>
