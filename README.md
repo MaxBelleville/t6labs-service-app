@@ -49,5 +49,5 @@ This project is licensed under the MIT License - see the **[LICENSE](https://git
 ## Acknowledgments
 
 * Hat tip to anyone whose code was used
-* Inspiration
+* Inspirations
 * etc
