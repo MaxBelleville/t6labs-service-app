@@ -36,19 +36,15 @@ import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
-    @BindView(R.id.myList)
-    RecyclerView localsListing;
+    @BindView(R.id.homeList)
+    RecyclerView homeList;
 
-    private LocalsListAdapter localsListAdapter;
+    private HomeListAdapter localsListAdapter;
     private Unbinder unbinder;
     private HomeViewModel viewModel;
 
     @NonNull
     private Observer<List<LocalsDto>> listingObserver = this::onListingUpdated;
-
-    public HomeFragment() {
-
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -104,7 +100,7 @@ public class HomeFragment extends Fragment {
 
     private void initLocalsListingRecyclerView(final List<LocalsDto> localsDto) {
 
-        localsListAdapter = new LocalsListAdapter(localsDto, (v, position) -> {
+        localsListAdapter = new HomeListAdapter(localsDto, (v, position) -> {
             String id = localsDto.get(position).getId();
             HomeFragmentDirections.ActionHomeFragmentToDescriptionFragment actionHomeFragmentToDescriptionFragment = HomeFragmentDirections.actionHomeFragmentToDescriptionFragment();
             actionHomeFragmentToDescriptionFragment.setListingId(id);
@@ -112,13 +108,13 @@ public class HomeFragment extends Fragment {
         });
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        localsListing.setLayoutManager(layoutManager);
-        localsListing.setAdapter(localsListAdapter);
+        homeList.setLayoutManager(layoutManager);
+        homeList.setAdapter(localsListAdapter);
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(Objects.requireNonNull(getActivity()), layoutManager.getOrientation());
 
         //TODO check for null
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getContext(), R.drawable.divider));
-        localsListing.addItemDecoration(dividerItemDecoration);
+        homeList.addItemDecoration(dividerItemDecoration);
     }
 }

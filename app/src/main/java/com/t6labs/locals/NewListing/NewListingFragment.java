@@ -15,10 +15,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
+import com.t6labs.locals.Account.AccountFragmentDirections;
 import com.t6labs.locals.Common.DescriptionDto;
 import com.t6labs.locals.Common.NewListingRequest;
 import com.t6labs.locals.MainActivity;
@@ -95,20 +97,22 @@ public class NewListingFragment extends Fragment {
         String title = newLTEdit.getText().toString();
         String shortDesc = newSDEdit.getText().toString();
         LocalsService localsService = RetrofitInstance.getRetrofitInstance(requireContext()).create(LocalsService.class);
-        Call<DescriptionDto> descriptionDtoCall = localsService.postLocalListing(new NewListingRequest(title, shortDesc));
-        descriptionDtoCall.enqueue(new Callback<DescriptionDto>() {
-            @Override
-            public void onResponse(@NonNull Call<DescriptionDto> call, @NonNull Response<DescriptionDto> response) {
-                Log.d("Tag", response.body().getTitle());
-                //TODO go to confirmation screen
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<DescriptionDto> call, @NonNull Throwable t) {
-                //TODO handle error
-                Log.d("Error",t.getMessage());
-            }
-        });
+//        Call<DescriptionDto> descriptionDtoCall = localsService.postLocalListing(new NewListingRequest(title, shortDesc));
+//        descriptionDtoCall.enqueue(new Callback<DescriptionDto>() {
+//            @Override
+//            public void onResponse(@NonNull Call<DescriptionDto> call, @NonNull Response<DescriptionDto> response) {
+//                Log.d("Tag", response.body().getTitle());
+//                //TODO go to confirmation screen
+//            }
+//
+//            @Override
+//            public void onFailure(@NonNull Call<DescriptionDto> call, @NonNull Throwable t) {
+//                //TODO handle error
+//                Log.d("Error",t.getMessage());
+//            }
+//        });
+        //TODO fix mock so we can start posting on there instead of posting to prod to limit spam data when testing commented out.
+        Navigation.findNavController(getView()).navigate(NewListingFragmentDirections.actionNewListingToMyListing());
     }
 
     @Override

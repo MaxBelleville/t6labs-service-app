@@ -15,12 +15,12 @@ import com.t6labs.locals.R;
 
 import java.util.List;
 
-public class LocalsListAdapter extends RecyclerView.Adapter<LocalsListAdapter.LocalsListViewHolder> {
+public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.LocalsListViewHolder> {
 
     private List<LocalsDto> localsArrayList;
     private LocalsListingClickListener listener;
 
-    LocalsListAdapter(List<LocalsDto> localsArrayList, LocalsListingClickListener listener) {
+    HomeListAdapter(List<LocalsDto> localsArrayList, LocalsListingClickListener listener) {
         this.localsArrayList = localsArrayList;
         this.listener = listener;
     }
@@ -29,7 +29,7 @@ public class LocalsListAdapter extends RecyclerView.Adapter<LocalsListAdapter.Lo
     @NonNull
     public LocalsListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.services_list_layout, parent, false);
+        View view = layoutInflater.inflate(R.layout.home_list_item, parent, false);
 
         return new LocalsListViewHolder(view);
     }

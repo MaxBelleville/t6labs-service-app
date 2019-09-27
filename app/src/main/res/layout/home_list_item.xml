@@ -11,6 +11,52 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/listFavourite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="favourite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_favorite_black_24dp" />
+
+        <ImageView
+            android:id="@+id/listIcon"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="300dp"
+            android:contentDescription="imageIcon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_person_black_24dp" />
+
+
+        <RatingBar
+            android:id="@+id/listRating"
+            style="@android:style/Widget.DeviceDefault.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:max="5"
+            android:numStars="5"
+            android:progressTint="#ffe900"
+            android:rating="3.5"
+            android:scaleX="1.25"
+            android:scaleY="1.25"
+            android:stepSize="0.5"
+            app:layout_constraintEnd_toStartOf="@+id/listDistance"
+            app:layout_constraintStart_toEndOf="@+id/listUser"
+            app:layout_constraintTop_toBottomOf="@+id/listDescription" />
+
         <TextView
             android:id="@+id/listDescription"
             android:layout_width="0dp"
@@ -46,7 +92,6 @@
             app:layout_constraintVertical_chainStyle="spread_inside"
             tools:text="List Title" />
 
-
         <TextView
             android:id="@+id/listUser"
             android:layout_width="0dp"
@@ -69,51 +114,6 @@
             app:layout_constraintVertical_bias="1.0"
             tools:text="List User Name" />
 
-        <RatingBar
-            android:id="@+id/listRating"
-            style="@android:style/Widget.DeviceDefault.RatingBar.Small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:max="5"
-            android:numStars="5"
-            android:progressTint="#ffe900"
-            android:rating="3.5"
-            android:scaleX="1.25"
-            android:scaleY="1.25"
-            android:stepSize="0.5"
-            app:layout_constraintEnd_toStartOf="@+id/listDistance"
-            app:layout_constraintStart_toEndOf="@+id/listUser"
-            app:layout_constraintTop_toBottomOf="@+id/listDescription" />
-
-        <ImageView
-            android:id="@+id/listFavourite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:contentDescription="favourite"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_favorite_black_24dp" />
-
-        <ImageView
-            android:id="@+id/listIcon"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="300dp"
-            android:contentDescription="imageIcon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_person_black_24dp" />
-
         <TextView
             android:id="@+id/listDistance"
             android:layout_width="wrap_content"
@@ -129,6 +129,7 @@
             tools:text="1 - 5km" />
 
         <View
+            android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginStart="80dp"
