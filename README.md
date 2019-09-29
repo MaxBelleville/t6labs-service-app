@@ -1,6 +1,6 @@
 # Helping Hands(Title - Work In Progress)
 
-An android application to aid in the development and growth of local businesses
+An android application to aid in the development, promotion and growth of local businesses, help students and help find cheaper options to expensive services.
 
 ### Prerequisites
 
