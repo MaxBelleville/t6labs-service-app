@@ -32,7 +32,7 @@ Explain how to run the automated tests for this system
 
 ## Built With
 
-TODO: Add a list of andriod libraries and tools we used
+TODO: Add a list of andriod libraries and tools we used and are currently using
 
 ## Contributing
 
