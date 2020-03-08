@@ -48,7 +48,7 @@ Please read (link here) for details on our code of conduct, and the process for 
 * **[Mehadi](https://github.com/KnightOfHonour12)** - *Front End Dev*
 * **[Aaliyan](https://github.com/Ayylien8)** - *Back End Dev*
 
-See also the list of (link here) who participated in this project.
+See also the list of (link here) who participated in this project. 
 
 ## License
 
